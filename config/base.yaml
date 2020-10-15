@@ -1,0 +1,4 @@
+tenancy: staging
+port: 5100
+loginAssetsURL: ./assets/index.html
+firebaseSecretURL: ./secrets/auth-admin-key.json
