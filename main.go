@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"go-oauth-lite/handlers"
-    oauth2handlers "go-oauth-lite/handlers/oauth2"
+	oauth2handlers "go-oauth-lite/handlers/oauth2"
 	configUtil "go-oauth-lite/util/config"
 
 	routing "github.com/qiangxue/fasthttp-routing"
@@ -22,8 +22,8 @@ func main() {
 	router := routing.New()
 
 	router.Get("/health", handlers.HealthHandler)
-    oauth2Routing := router.Group("/oauth2")
-    oauth2Routing.Get("/authorize", oauth2handlers.AuthorizationHandler)
+	oauth2Routing := router.Group("/oauth2")
+	oauth2Routing.Get("/authorize", oauth2handlers.AuthorizationHandler)
 
 	log.Println("starting HTTP server on port " + configUtil.GetConfig().Port)
 	fasthttp.ListenAndServe(":"+configUtil.GetConfig().Port, router.HandleRequest)

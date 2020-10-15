@@ -6,9 +6,8 @@ import (
 
 	configUtil "go-oauth-lite/util/config"
 	responseUtil "go-oauth-lite/util/response"
-
-	//firebaseWrapper "go-oauth-lite/util/firebaseWrapper"
-	oauth2client "go-oauth-lite/client"
+    //firebaseWrapper "go-oauth-lite/util/firebaseWrapper"
+    oauth2client "go-oauth-lite/client"
 
 	routing "github.com/qiangxue/fasthttp-routing"
 )
@@ -36,15 +35,15 @@ func AuthorizationHandler(ctx *routing.Context) error {
 			http.StatusBadRequest)
 	}
 
-	isValidClient, err := oauth2client.IsValidClientAuthRequest(authReq.ClientID, authReq.Scope)
-	if err != nil {
-		return responseUtil.RespondError(ctx, err, "internal error", http.StatusInternalServerError)
-	}
-	if !isValidClient {
-		return responseUtil.RespondError(ctx, nil, "invalid client", http.StatusForbidden)
-	}
+    isValidClient, err := oauth2client.IsValidClientAuthRequest(authReq.ClientID, authReq.Scope)
+    if err != nil {
+        return responseUtil.RespondError(ctx, err, "internal error", http.StatusInternalServerError)
+    }
+    if !isValidClient {
+        return responseUtil.RespondError(ctx, nil, "invalid client", http.StatusForbidden)
+    }
 
-	//checked clientID is valid and scope is valid for the client
+    //checked clientID is valid and scope is valid for the client
 
 	ctx.SendFile(configUtil.GetConfig().LoginAssetsURL)
 	return nil

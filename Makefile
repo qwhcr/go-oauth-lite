@@ -8,5 +8,8 @@ run:
 	./auth-server
 
 clean:
-	rm ./auth-server
+	-rm ./auth-server
+
+precommit: clean
+	go fmt *.go
 
