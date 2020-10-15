@@ -10,10 +10,10 @@ import (
 )
 
 type Config struct {
-	Tenancy string `yaml:"tenancy"`
-	Port    string `yaml:"port"`
-    FirebaseSecretURL string `yaml:"firebaseSecretURL"`
-    LoginAssetsURL string `yaml:"loginAssetsURL"`
+	Tenancy           string `yaml:"tenancy"`
+	Port              string `yaml:"port"`
+	FirebaseSecretURL string `yaml:"firebaseSecretURL"`
+	LoginAssetsURL    string `yaml:"loginAssetsURL"`
 }
 
 var config Config = Config{}

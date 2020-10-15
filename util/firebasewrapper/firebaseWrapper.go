@@ -22,27 +22,27 @@ func setupApp(ctx context.Context) {
 	if err != nil {
 		log.Fatalf("error initializing app: %v\n", err)
 	}
-    firebaseApp = app
+	firebaseApp = app
 }
 
 func GetFirebaseAuthClient() *auth.Client {
-    if authClient != nil {
-        return authClient
-    }
+	if authClient != nil {
+		return authClient
+	}
 
-    ctx := context.Background()
+	ctx := context.Background()
 
-    if firebaseApp == nil {
-        setupApp(ctx)
-    }
+	if firebaseApp == nil {
+		setupApp(ctx)
+	}
 
-    var err error
-    authClient, err = firebaseApp.Auth(ctx)
+	var err error
+	authClient, err = firebaseApp.Auth(ctx)
 
-    if err != nil {
-        log.Fatalln(err)
-    }
-    return authClient
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return authClient
 }
 
 func GetFirestoreClient() *firestore.Client {
@@ -50,14 +50,14 @@ func GetFirestoreClient() *firestore.Client {
 		return firestoreClient
 	}
 
-    ctx := context.Background()
+	ctx := context.Background()
 
-    if firebaseApp == nil {
-        setupApp(ctx)
-    }
+	if firebaseApp == nil {
+		setupApp(ctx)
+	}
 
-    var err error
-    firestoreClient, err = firebaseApp.Firestore(ctx)
+	var err error
+	firestoreClient, err = firebaseApp.Firestore(ctx)
 	if err != nil {
 		log.Fatalln(err)
 	}
