@@ -2,7 +2,7 @@ package client
 
 import (
 	"context"
-    "errors"
+	"errors"
 
 	"github.com/google/uuid"
 	"google.golang.org/api/iterator"
@@ -38,15 +38,15 @@ func IsValidClientAuthRequest(clientIDParam string, scopeParam string) (bool, er
 
 	var client Client
 	err = doc.DataTo(&client)
-    validScopes, ok := doc.Data()["valid_scope"].([]interface{})
-    if !ok {
-        return false, errors.New("ValidScopes type mismatch")
-    }
-    for _, validScope := range validScopes {
-            if validScope.(string) == scopeParam {
-                return true, nil
-            }
-        }
-    return false, nil
+	validScopes, ok := doc.Data()["valid_scope"].([]interface{})
+	if !ok {
+		return false, errors.New("ValidScopes type mismatch")
+	}
+	for _, validScope := range validScopes {
+		if validScope.(string) == scopeParam {
+			return true, nil
+		}
+	}
+	return false, nil
 
 }
